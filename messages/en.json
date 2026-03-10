@@ -1,13 +1,180 @@
 {
-  "HomePage": {
-    "title": "Welcome",
-    "description": "Get started by editing this page.",
-    "components": {
-      "title": "Available Components",
-      "button": "Button",
-      "input": "Input",
-      "card": "Card",
-      "label": "Label"
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "occasions": "Occasions",
+    "events": "Events",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "orderOnWolt": "Order on Wolt",
+    "phone": "Phone",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "Hero": {
+    "headline": "MOISIS Flower Design",
+    "subheadline": "Curated floral compositions — Events • Custom Arrangements • Seasonal Design",
+    "location": "Ilioupoli",
+    "woltButton": "Order Now",
+    "contactButton": "Contact Us",
+    "scrollDown": "Discover more"
+  },
+  "About": {
+    "title": "About Us",
+    "subtitle": "The story behind every creation",
+    "description": "At MOISIS Flower Design, Harris crafts one-of-a-kind floral arrangements with a passion for quality and meticulous attention to detail. Every bouquet, every decoration, every composition is a small work of art — made with fresh flowers that last for weeks.",
+    "highlights": {
+      "quality": {
+        "title": "Quality",
+        "description": "Long-lasting fresh flowers — every arrangement is crafted with the finest materials"
+      },
+      "creativity": {
+        "title": "Creativity",
+        "description": "Unique designs for every occasion — from classic bouquets to stunning event installations"
+      },
+      "service": {
+        "title": "Service",
+        "description": "Personal care from consultation to delivery — always with a smile"
+      }
+    }
+  },
+  "Occasions": {
+    "title": "Occasions",
+    "subtitle": "Flowers for every moment in life",
+    "items": {
+      "love": {
+        "title": "Love",
+        "description": "Romantic bouquets and arrangements for your special someone"
+      },
+      "birth": {
+        "title": "New Baby",
+        "description": "Welcome new life with beautiful flowers"
+      },
+      "congratulations": {
+        "title": "Congratulations",
+        "description": "Celebrate achievements with stunning floral arrangements"
+      },
+      "condolence": {
+        "title": "Sympathy",
+        "description": "Respectful arrangements to express your condolences"
+      },
+      "plants": {
+        "title": "Interior Decor",
+        "description": "Transform your space with plants and greenery"
+      },
+      "bouquets": {
+        "title": "Bouquets",
+        "description": "Custom bouquets made especially for you"
+      }
+    }
+  },
+  "Events": {
+    "title": "Events",
+    "subtitle": "We create the perfect floral setting for every occasion",
+    "seeMore": "See more",
+    "items": {
+      "wedding": {
+        "title": "Wedding",
+        "description": "Complete floral styling and wedding decoration"
+      },
+      "christening": {
+        "title": "Christenings",
+        "description": "Beautiful floral arrangements for christenings"
+      },
+      "graduation": {
+        "title": "Graduation",
+        "description": "Celebrate with elegant floral arrangements"
+      },
+      "corporate": {
+        "title": "Corporate",
+        "description": "Professional floral styling for events and spaces"
+      }
+    }
+  },
+  "Gallery": {
+    "title": "Gallery",
+    "subtitle": "A glimpse of our creations",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "imageOf": "of"
+  },
+  "Reviews": {
+    "title": "Reviews",
+    "subtitle": "What our clients say",
+    "overallRating": "Overall Rating",
+    "fromGoogle": "from Google Reviews",
+    "reviewsCount": "reviews"
+  },
+  "Contact": {
+    "title": "Contact",
+    "subtitle": "We'd love to hear from you",
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Hours"
+    },
+    "hours": {
+      "title": "Opening Hours",
+      "weekdays": "Monday - Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send",
+      "subjects": {
+        "general": "General Inquiry",
+        "wedding": "Wedding",
+        "christening": "Christenings",
+        "graduation": "Graduation",
+        "corporate": "Corporate Event",
+        "other": "Other"
+      },
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "email@example.com",
+      "phonePlaceholder": "69XXXXXXXX",
+      "messagePlaceholder": "Tell us what you need..."
+    }
+  },
+  "Footer": {
+    "quickLinks": "Quick Links",
+    "events": "Events",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "copyright": "All rights reserved.",
+    "orderOnWolt": "Order on Wolt"
+  },
+  "EventPage": {
+    "backToEvents": "Back to Events",
+    "bookConsultation": "Book a Consultation",
+    "portfolio": "View our creations",
+    "contactUs": "Get in touch to discuss your needs",
+    "wedding": {
+      "title": "Wedding",
+      "heroDescription": "Complete floral styling to make your day truly magical",
+      "about": "At MOISIS Flower Design, we take care of every floral detail for your wedding. From the bridal bouquet to the church and reception decor, every element is designed with love and precision. Harris works closely with you to bring your dream atmosphere to life, using only the freshest and most exquisite flowers."
+    },
+    "christening": {
+      "title": "Christenings",
+      "heroDescription": "Flowers that make the christening unforgettable",
+      "about": "We create unique floral arrangements for christenings that blend the joy of the moment with the elegance of fresh flowers. From soft pastels to bolder palettes, we tailor every creation to match the style and theme of your celebration."
+    },
+    "graduation": {
+      "title": "Graduation",
+      "heroDescription": "Celebrate this milestone in style",
+      "about": "Graduation is a milestone that deserves to be celebrated with the most beautiful flowers. We create elegant bouquets and arrangements that express the pride and joy of this special day."
+    },
+    "corporate": {
+      "title": "Corporate",
+      "heroDescription": "Professional floral styling for every business need",
+      "about": "We handle floral design for corporate events, conferences, grand openings, and office spaces. With professionalism and a refined aesthetic, we create arrangements that elevate any environment and impress your guests."
     }
   },
   "Admin": {

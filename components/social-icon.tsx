@@ -10,6 +10,7 @@ const COLOR_CLASSES: Record<string, string> = {
   twitter: "bg-sky-500/10 hover:bg-sky-500/20 text-sky-500",
   tiktok: "bg-neutral-500/10 hover:bg-neutral-500/20 text-neutral-900 dark:text-neutral-100",
   linkedin: "bg-blue-600/10 hover:bg-blue-600/20 text-blue-600",
+  wolt: "bg-wolt-blue/10 hover:bg-wolt-blue/20 text-wolt-blue",
 };
 
 interface SocialIconProps {
