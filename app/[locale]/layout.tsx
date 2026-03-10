@@ -5,6 +5,7 @@ import { setRequestLocale, getMessages } from "next-intl/server";
 import { EB_Garamond, Manrope } from "next/font/google";
 import { routing } from "@/lib/i18n/routing";
 import { Providers } from "@/components/providers";
+import { Navbar } from "@/components/navbar";
 import { BaseLayoutProps } from "@/types/page-props";
 import "./globals.css";
 
@@ -43,6 +44,7 @@ const LocaleLayout = async ({ children, params }: BaseLayoutProps) => {
     <html lang={locale} suppressHydrationWarning>
       <body className={`${ebGaramond.variable} ${manrope.variable} font-sans antialiased`}>
         <Providers messages={messages} locale={locale}>
+          <Navbar />
           {children}
         </Providers>
       </body>
