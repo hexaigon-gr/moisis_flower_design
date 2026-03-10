@@ -283,12 +283,9 @@ export const Navbar = () => {
           </div>
 
           {/* Bottom Section */}
-          <div className="space-y-6 pt-6">
-            {/* Wolt Button */}
-            <WoltButton
-              size="small"
-              className="w-full justify-center text-wolt-blue"
-            />
+          <div className="space-y-4 border-t border-border pt-4">
+            {/* Wolt Button — full width, normal size */}
+            <WoltButton className="w-full justify-center" />
 
             {/* Phone */}
             <a
@@ -299,32 +296,32 @@ export const Navbar = () => {
               {BUSINESS.phone}
             </a>
 
-            {/* Social Icons */}
-            <div className="flex items-center gap-3 px-1">
-              <SocialIcon
-                url={BUSINESS.socials.instagram}
-                icon={<InstagramIcon className="size-4" />}
-                color="instagram"
-                isMobile
-              />
-              <SocialIcon
-                url={BUSINESS.socials.facebook}
-                icon={<FacebookIcon className="size-4" />}
-                color="facebook"
-                isMobile
-              />
-              <SocialIcon
-                url={BUSINESS.socials.tiktok}
-                icon={<TikTokIcon className="size-4" />}
-                color="tiktok"
-                isMobile
-              />
-            </div>
-
-            {/* Language & Theme Switchers */}
-            <div className="flex items-center gap-2 px-1">
-              <LanguageSwitcher />
-              <ThemeSwitcher />
+            {/* Social Icons + Switchers */}
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-3">
+                <SocialIcon
+                  url={BUSINESS.socials.instagram}
+                  icon={<InstagramIcon className="size-4" />}
+                  color="instagram"
+                  isMobile
+                />
+                <SocialIcon
+                  url={BUSINESS.socials.facebook}
+                  icon={<FacebookIcon className="size-4" />}
+                  color="facebook"
+                  isMobile
+                />
+                <SocialIcon
+                  url={BUSINESS.socials.tiktok}
+                  icon={<TikTokIcon className="size-4" />}
+                  color="tiktok"
+                  isMobile
+                />
+              </div>
+              <div className="flex items-center gap-1">
+                <LanguageSwitcher />
+                <ThemeSwitcher />
+              </div>
             </div>
           </div>
         </div>
