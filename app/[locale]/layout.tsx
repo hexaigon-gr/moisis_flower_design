@@ -7,6 +7,7 @@ import { routing } from "@/lib/i18n/routing";
 import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/navbar";
 import { BaseLayoutProps } from "@/types/page-props";
+import { BASE_URL, BUSINESS } from "@/lib/general/constants";
 import "./globals.css";
 
 const ebGaramond = EB_Garamond({
@@ -24,8 +25,51 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "MΩISIS Flower Design",
-  description: "Curated floral compositions — Defined by quality & detail",
+  title: {
+    default: "MΩISIS Flower Design | Ανθοπωλείο Ηλιούπολη",
+    template: "%s | MΩISIS Flower Design",
+  },
+  description:
+    "Curated floral compositions for weddings, christenings, and every occasion. Premium flower shop in Ilioupoli, Athens. Defined by quality & detail.",
+  keywords: [
+    "ανθοπωλείο",
+    "Ηλιούπολη",
+    "λουλούδια",
+    "γάμος",
+    "βάπτιση",
+    "ανθοδέσμη",
+    "flower shop",
+    "Athens",
+    "wedding flowers",
+    "MΩISIS",
+  ],
+  authors: [{ name: "MΩISIS Flower Design" }],
+  creator: "MΩISIS Flower Design",
+  metadataBase: new URL(BASE_URL),
+  alternates: {
+    canonical: "/",
+    languages: { el: "/el", en: "/en" },
+  },
+  openGraph: {
+    type: "website",
+    siteName: "MΩISIS Flower Design",
+    title: "MΩISIS Flower Design | Ανθοπωλείο Ηλιούπολη",
+    description:
+      "Curated floral compositions for weddings, christenings, and every occasion. Premium flower shop in Ilioupoli, Athens.",
+    images: [{ url: "/images/og.jpg", width: 1920, height: 1080, alt: "MΩISIS Flower Design" }],
+    locale: "el_GR",
+    alternateLocale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MΩISIS Flower Design",
+    description: "Premium flower shop in Ilioupoli, Athens — weddings, events & curated arrangements.",
+    images: ["/images/og.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export const generateStaticParams = () => {
@@ -43,6 +87,51 @@ const LocaleLayout = async ({ children, params }: BaseLayoutProps) => {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${ebGaramond.variable} ${manrope.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Florist",
+              name: BUSINESS.name,
+              description: "Curated floral compositions for weddings, christenings, and every occasion. Premium flower shop in Ilioupoli, Athens.",
+              url: BASE_URL,
+              telephone: BUSINESS.phoneHref.replace("tel:", ""),
+              email: BUSINESS.email,
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: BUSINESS.address.street,
+                addressLocality: BUSINESS.address.city,
+                addressRegion: "Αττική",
+                postalCode: BUSINESS.address.zip,
+                addressCountry: "GR",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 37.9300,
+                longitude: 23.7500,
+              },
+              openingHoursSpecification: [
+                { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "22:00" },
+                { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:00", closes: "22:00" },
+                { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "10:00", closes: "21:00" },
+              ],
+              image: `${BASE_URL}/images/og.jpg`,
+              priceRange: "€€",
+              sameAs: [
+                BUSINESS.socials.facebook,
+                BUSINESS.socials.instagram,
+                BUSINESS.socials.tiktok,
+              ],
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "5.0",
+                reviewCount: "10",
+                bestRating: "5",
+              },
+            }),
+          }}
+        />
         <Providers messages={messages} locale={locale}>
           <Navbar />
           {children}

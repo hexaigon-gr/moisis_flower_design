@@ -2,12 +2,21 @@
 
 import { useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, User, AtSign, MessageSquare, Tag } from "lucide-react";
+import { FadeIn } from "@/components/motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { BUSINESS } from "@/lib/general/constants";
+import { LocationMap } from "@/components/ui/expand-map";
 
 const SUBJECT_KEYS = [
   "general",
@@ -58,7 +67,7 @@ export function ContactSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-16">
+        <FadeIn className="text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl tracking-tight text-foreground mb-4">
             {t("title")}
           </h2>
@@ -69,12 +78,12 @@ export function ContactSection() {
           <p className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
-        </div>
+        </FadeIn>
 
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
           {/* ── Left Column: Contact Info + Map (2/5 = 40%) ── */}
-          <div className="lg:col-span-2 flex flex-col gap-6">
+          <FadeIn direction="left" className="lg:col-span-2 flex flex-col gap-6">
             {/* Contact info cards */}
             <div className="space-y-4">
               {/* Address */}
@@ -135,21 +144,16 @@ export function ContactSection() {
               </ContactInfoCard>
             </div>
 
-            {/* Google Maps embed */}
-            <div className="rounded-xl overflow-hidden border border-border/60 shadow-sm aspect-[4/3]">
-              <iframe
-                title="MΩISIS Flower Design location"
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(BUSINESS.address.full)}&output=embed`}
-                className="w-full h-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
-          </div>
+            {/* Interactive map card */}
+            <LocationMap
+              location={BUSINESS.address.full}
+              coordinates="37.9300° N, 23.7500° E"
+              mapsUrl={BUSINESS.googleMapsLink}
+            />
+          </FadeIn>
 
           {/* ── Right Column: Contact Form (3/5 = 60%) ── */}
-          <div className="lg:col-span-3">
+          <FadeIn direction="right" delay={0.2} className="lg:col-span-3">
             <form
               onSubmit={handleSubmit}
               className="rounded-xl border border-border/60 bg-card/70 backdrop-blur-sm p-8 md:p-10 shadow-sm space-y-6"
@@ -157,70 +161,88 @@ export function ContactSection() {
               {/* Name + Email row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FormField label={t("form.name")} htmlFor="contact-name">
-                  <Input
-                    id="contact-name"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder={t("form.namePlaceholder")}
-                    required
-                  />
+                  <IconInput icon={<User className="size-4" />}>
+                    <Input
+                      id="contact-name"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder={t("form.namePlaceholder")}
+                      className="pl-9"
+                      required
+                    />
+                  </IconInput>
                 </FormField>
 
                 <FormField label={t("form.email")} htmlFor="contact-email">
-                  <Input
-                    id="contact-email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder={t("form.emailPlaceholder")}
-                    required
-                  />
+                  <IconInput icon={<AtSign className="size-4" />}>
+                    <Input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder={t("form.emailPlaceholder")}
+                      className="pl-9"
+                      required
+                    />
+                  </IconInput>
                 </FormField>
               </div>
 
               {/* Phone + Subject row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FormField label={t("form.phone")} htmlFor="contact-phone">
-                  <Input
-                    id="contact-phone"
-                    name="phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={handleChange}
-                    placeholder={t("form.phonePlaceholder")}
-                  />
+                  <IconInput icon={<Phone className="size-4" />}>
+                    <Input
+                      id="contact-phone"
+                      name="phone"
+                      type="tel"
+                      value={form.phone}
+                      onChange={handleChange}
+                      placeholder={t("form.phonePlaceholder")}
+                      className="pl-9"
+                    />
+                  </IconInput>
                 </FormField>
 
                 <FormField label={t("form.subject")} htmlFor="contact-subject">
-                  <select
-                    id="contact-subject"
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    className="h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] md:text-sm"
-                  >
-                    {SUBJECT_KEYS.map((key) => (
-                      <option key={key} value={key}>
-                        {t(`form.subjects.${key}`)}
-                      </option>
-                    ))}
-                  </select>
+                  <IconInput icon={<Tag className="size-4" />}>
+                    <Select
+                      value={form.subject}
+                      onValueChange={(value) =>
+                        setForm((prev) => ({ ...prev, subject: value }))
+                      }
+                    >
+                      <SelectTrigger id="contact-subject" className="w-full pl-9">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {SUBJECT_KEYS.map((key) => (
+                          <SelectItem key={key} value={key}>
+                            {t(`form.subjects.${key}`)}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </IconInput>
                 </FormField>
               </div>
 
               {/* Message */}
               <FormField label={t("form.message")} htmlFor="contact-message">
-                <Textarea
-                  id="contact-message"
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder={t("form.messagePlaceholder")}
-                  rows={5}
-                  required
-                />
+                <IconInput icon={<MessageSquare className="size-4" />} alignTop>
+                  <Textarea
+                    id="contact-message"
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder={t("form.messagePlaceholder")}
+                    className="pl-9"
+                    rows={5}
+                    required
+                  />
+                </IconInput>
               </FormField>
 
               {/* Submit */}
@@ -232,7 +254,7 @@ export function ContactSection() {
                 {t("form.send")}
               </Button>
             </form>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>
@@ -288,6 +310,25 @@ function FormField({
       <Label htmlFor={htmlFor} className="text-sm font-medium text-foreground">
         {label}
       </Label>
+      {children}
+    </div>
+  );
+}
+
+function IconInput({
+  icon,
+  alignTop,
+  children,
+}: {
+  icon: React.ReactNode;
+  alignTop?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="relative">
+      <div className={`absolute left-3 z-10 text-muted-foreground pointer-events-none ${alignTop ? "top-3" : "top-1/2 -translate-y-1/2"}`}>
+        {icon}
+      </div>
       {children}
     </div>
   );

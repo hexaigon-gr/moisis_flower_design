@@ -1,3 +1,5 @@
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://moisisflowerdesign.gr";
+
 export const BUSINESS = {
   name: "MΩISIS Flower Design",
   tagline: "Curated floral compositions — Defined by quality & detail",
@@ -22,8 +24,9 @@ export const BUSINESS = {
     saturday: { open: "10:00", close: "22:00" },
     sunday: { open: "10:00", close: "21:00" },
   },
+  googleMapsLink: "https://maps.app.goo.gl/kmyEjX8qJb37WkbDA",
   googleMapsEmbed:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.5!2d23.75!3d37.93!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDU1JzQ4LjAiTiAyM8KwNDUnMDAuMCJF!5e0!3m2!1sel!2sgr!4v1",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.5!2d23.75!3d37.93!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd40b8c7c22b%3A0x6f8d6f1e5c9c4a2e!2sMoisis%20Flower%20Design!5e0!3m2!1sel!2sgr",
 } as const;
 
 export const OCCASIONS = [
@@ -31,8 +34,6 @@ export const OCCASIONS = [
   { slug: "birth", icon: "Baby" },
   { slug: "congratulations", icon: "PartyPopper" },
   { slug: "condolence", icon: "Flower2" },
-  { slug: "plants", icon: "TreePine" },
-  { slug: "bouquets", icon: "Flower" },
 ] as const;
 
 export const EVENTS = [

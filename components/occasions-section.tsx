@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { OCCASIONS } from "@/lib/general/constants";
+import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
 
 export function OccasionsSection() {
   const t = useTranslations("Occasions");
@@ -17,7 +18,7 @@ export function OccasionsSection() {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16 md:mb-20">
+        <FadeIn className="text-center mb-16 md:mb-20">
           {/* Decorative separator above title */}
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="h-px w-10 bg-gold/40" />
@@ -31,17 +32,14 @@ export function OccasionsSection() {
           <p className="text-muted-foreground text-lg md:text-xl font-light max-w-xl mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
-        </div>
+        </FadeIn>
 
         {/* Occasions grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-6xl mx-auto">
-          {OCCASIONS.map((occasion, index) => (
+        <StaggerChildren staggerDelay={0.12} className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 max-w-4xl mx-auto">
+          {OCCASIONS.map((occasion) => (
+            <StaggerItem key={occasion.slug}>
             <div
-              key={occasion.slug}
-              className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 hover:scale-105"
-              style={{
-                animationDelay: `${index * 80}ms`,
-              }}
+              className="group relative aspect-3/4 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
               {/* Photo background */}
               <Image
@@ -69,8 +67,9 @@ export function OccasionsSection() {
                 </p>
               </div>
             </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   );

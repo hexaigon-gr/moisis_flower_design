@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { EVENTS } from "@/lib/general/constants";
+import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
 
 export function EventsSection() {
   const t = useTranslations("Events");
@@ -13,7 +14,7 @@ export function EventsSection() {
     <section id="events" className="py-24 px-6">
       <div className="mx-auto max-w-6xl">
         {/* Section header */}
-        <div className="mb-16 text-center">
+        <FadeIn className="mb-16 text-center">
           <h2 className="font-heading text-4xl md:text-5xl text-foreground tracking-tight mb-4">
             {t("title")}
           </h2>
@@ -25,15 +26,15 @@ export function EventsSection() {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto font-light">
             {t("subtitle")}
           </p>
-        </div>
+        </FadeIn>
 
         {/* Events grid — 2x2 on desktop, 1 col on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <StaggerChildren staggerDelay={0.12} className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {EVENTS.map((event) => (
+            <StaggerItem key={event.slug}>
             <Link
-              key={event.slug}
               href={`/events/${event.slug}`}
-              className="group relative block aspect-[16/10] overflow-hidden rounded-xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="group relative block aspect-16/10 overflow-hidden rounded-xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               {/* Background image with hover zoom */}
               <Image
@@ -62,8 +63,9 @@ export function EventsSection() {
                 </span>
               </div>
             </Link>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   );

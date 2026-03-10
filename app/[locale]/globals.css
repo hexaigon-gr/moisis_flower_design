@@ -61,7 +61,7 @@
   --cream: oklch(0.96 0.015 80);
   --cream-dark: oklch(0.91 0.02 80);
   --forest: oklch(0.15 0.005 260);
-  --wolt-blue: oklch(0.62 0.16 230);
+  --wolt-blue: #4BB1DD;
 
   /* Light mode */
   --background: oklch(0.97 0.01 80);

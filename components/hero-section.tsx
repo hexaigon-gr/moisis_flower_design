@@ -68,7 +68,7 @@ export function HeroSection() {
             href="#contact"
             className="flex items-center gap-2 rounded-lg border-2 border-gold/60 bg-transparent px-7 py-3.5 text-gold-light font-medium transition-all duration-300 hover:bg-gold/10 hover:border-gold hover:scale-[1.02] active:scale-[0.98]"
           >
-            <MessageCircle className="size-4" />
+            <MessageCircle className="size-4 text-gold" />
             <span className="text-base tracking-wide">
               {t("contactButton")}
             </span>

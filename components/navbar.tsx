@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/general/utils";
 import { BUSINESS } from "@/lib/general/constants";
+import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/examples/language-switcher";
 import { ThemeSwitcher } from "@/components/examples/ThemeSwitcher";
@@ -43,8 +44,12 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 
 export const Navbar = () => {
   const t = useTranslations("Nav");
+  const pathname = usePathname();
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,6 +83,12 @@ export const Navbar = () => {
       e.preventDefault();
       closeMobileMenu();
 
+      if (!isHomePage) {
+        // Navigate to homepage with hash — scroll will happen after load
+        router.push(`/${href}`);
+        return;
+      }
+
       if (href === "#hero") {
         window.scrollTo({ top: 0, behavior: "smooth" });
         return;
@@ -88,7 +99,7 @@ export const Navbar = () => {
         target.scrollIntoView({ behavior: "smooth" });
       }
     },
-    [closeMobileMenu]
+    [closeMobileMenu, isHomePage, router]
   );
 
   return (
@@ -110,7 +121,7 @@ export const Navbar = () => {
               className="relative flex shrink-0 items-center"
             >
               <Image
-                src="/images/logo.png"
+                src="/images/mini_logo.png"
                 alt={BUSINESS.name}
                 width={40}
                 height={40}
@@ -237,7 +248,7 @@ export const Navbar = () => {
         {/* Panel Header */}
         <div className="flex h-16 items-center justify-between border-b border-border px-6">
           <Image
-            src="/images/logo.png"
+            src="/images/mini_logo.png"
             alt={BUSINESS.name}
             width={32}
             height={32}

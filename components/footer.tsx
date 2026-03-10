@@ -9,7 +9,7 @@ import {
   MapPin,
   Phone,
   Mail,
-  ExternalLink,
+  Hexagon,
 } from "lucide-react";
 
 /* TikTok has no lucide icon — inline SVG */
@@ -78,12 +78,12 @@ export async function Footer() {
             <ul className="space-y-3">
               {NAV_LINKS.map(({ href, key }) => (
                 <li key={key}>
-                  <a
-                    href={href}
+                  <Link
+                    href={`/${href}`}
                     className="text-sm text-cream/70 transition-colors duration-300 hover:text-gold"
                   >
                     {tNav(key)}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -170,19 +170,14 @@ export async function Footer() {
                   color="tiktok"
                   isMobile
                 />
+                <SocialIcon
+                  url={BUSINESS.wolt}
+                  icon={<img src="/images/wolt-icon.webp" alt="Wolt" className="size-5 rounded-full" />}
+                  color="wolt"
+                  isMobile
+                />
               </div>
             </div>
-
-            {/* Wolt link */}
-            <a
-              href={BUSINESS.wolt}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-gold/30 px-4 py-2 text-xs font-medium text-gold transition-all duration-300 hover:border-gold hover:bg-gold/10"
-            >
-              <ExternalLink className="size-3.5" />
-              {tFooter("orderOnWolt")}
-            </a>
           </div>
         </div>
 
@@ -198,13 +193,7 @@ export async function Footer() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-[11px] text-cream/30 transition-colors duration-300 hover:text-cream/50"
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="size-3.5 fill-amber-500/70"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5" />
-            </svg>
+            <Hexagon className="size-3.5 text-gold" />
             Made by hexaigon.gr
           </a>
         </div>

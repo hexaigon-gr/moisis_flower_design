@@ -3,6 +3,14 @@
 import { useTranslations } from "next-intl";
 import { Star, Quote } from "lucide-react";
 import { REVIEWS } from "@/lib/general/constants";
+import { FadeIn } from "@/components/motion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 function GoogleIcon({ className }: { className?: string }) {
   return (
@@ -55,7 +63,7 @@ export function ReviewsSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-14">
+        <FadeIn className="text-center mb-14">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="h-px w-10 bg-gold/40" />
             <div className="size-1.5 rounded-full bg-gold/60" />
@@ -68,12 +76,11 @@ export function ReviewsSection() {
           <p className="text-muted-foreground text-lg md:text-xl font-light max-w-xl mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
-        </div>
+        </FadeIn>
 
         {/* Overall Rating Badge */}
-        <div className="flex justify-center mb-14">
+        <FadeIn delay={0.2} className="flex justify-center mb-14">
           <div className="relative rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm px-10 py-8 text-center shadow-lg shadow-gold/5">
-            {/* Subtle gold top border accent */}
             <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-gold/50 to-transparent" />
 
             <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-3">
@@ -106,48 +113,64 @@ export function ReviewsSection() {
               {REVIEWS.length} {t("reviewsCount")}
             </p>
           </div>
-        </div>
+        </FadeIn>
 
-        {/* Review Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {REVIEWS.map((review, index) => (
-            <div
-              key={index}
-              className="group relative rounded-xl border border-border/60 bg-card/50 backdrop-blur-sm p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/5 hover:border-gold/30"
-            >
-              {/* Decorative quote */}
-              <Quote className="absolute top-4 right-4 size-8 text-gold/10 transition-colors duration-300 group-hover:text-gold/20" />
+        {/* Review Cards Carousel */}
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {REVIEWS.map((review, index) => (
+              <CarouselItem
+                key={index}
+                className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
+              >
+                <div className="group relative h-full rounded-xl border border-border/60 bg-card/50 backdrop-blur-sm p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/5 hover:border-gold/30">
+                  {/* Decorative quote */}
+                  <Quote className="absolute top-4 right-4 size-8 text-gold/10 transition-colors duration-300 group-hover:text-gold/20" />
 
-              {/* Header: name + stars + time */}
-              <div className="mb-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-semibold text-foreground text-base truncate pr-8">
-                    {review.name}
-                  </h3>
+                  {/* Header: name + stars + time */}
+                  <div className="mb-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold text-foreground text-base truncate pr-8">
+                        {review.name}
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <StarRating count={review.rating} />
+                      <span className="text-xs text-muted-foreground/60">
+                        {review.timeAgo}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Review text */}
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
+                    {review.text}
+                  </p>
+
+                  {/* Footer: Google badge */}
+                  <div className="mt-4 pt-4 border-t border-border/40 flex items-center gap-1.5">
+                    <GoogleIcon className="size-3.5" />
+                    <span className="text-xs text-muted-foreground/50 font-medium">
+                      Google
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <StarRating count={review.rating} />
-                  <span className="text-xs text-muted-foreground/60">
-                    {review.timeAgo}
-                  </span>
-                </div>
-              </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
 
-              {/* Review text */}
-              <p className="text-sm text-muted-foreground leading-relaxed line-clamp-4">
-                {review.text}
-              </p>
-
-              {/* Footer: Google badge */}
-              <div className="mt-4 pt-4 border-t border-border/40 flex items-center gap-1.5">
-                <GoogleIcon className="size-3.5" />
-                <span className="text-xs text-muted-foreground/50 font-medium">
-                  Google
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+          {/* Navigation arrows */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            <CarouselPrevious className="static translate-y-0 size-10 border-border/60 bg-card/80 hover:bg-gold/10 hover:border-gold/40 hover:text-gold" />
+            <CarouselNext className="static translate-y-0 size-10 border-border/60 bg-card/80 hover:bg-gold/10 hover:border-gold/40 hover:text-gold" />
+          </div>
+        </Carousel>
       </div>
     </section>
   );

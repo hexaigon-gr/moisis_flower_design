@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Award, Sparkles, HeartHandshake } from "lucide-react";
 import { CircleIcon } from "@/components/CircleIcon";
+import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
 
 const HIGHLIGHTS = [
   { key: "quality", icon: <Award className="size-5" /> },
@@ -21,7 +22,7 @@ export function AboutSection() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
           {/* Left column — Text */}
-          <div className="lg:w-3/5">
+          <FadeIn direction="left" className="lg:w-3/5">
             <h2 className="font-heading text-4xl md:text-5xl tracking-tight text-foreground mb-4">
               {t("title")}
             </h2>
@@ -39,15 +40,13 @@ export function AboutSection() {
             <p className="text-base text-muted-foreground/80 leading-relaxed max-w-xl">
               {t("description")}
             </p>
-          </div>
+          </FadeIn>
 
           {/* Right column — Highlight cards */}
-          <div className="lg:w-2/5 w-full flex flex-col gap-5">
+          <StaggerChildren staggerDelay={0.15} className="lg:w-2/5 w-full flex flex-col gap-5">
             {HIGHLIGHTS.map(({ key, icon }) => (
-              <div
-                key={key}
-                className="group relative rounded-xl border border-border/60 bg-card/50 backdrop-blur-sm p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/5 hover:border-gold/30"
-              >
+              <StaggerItem key={key}>
+                <div className="group relative rounded-xl border border-border/60 bg-card/50 backdrop-blur-sm p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/5 hover:border-gold/30">
                 <div className="flex items-start gap-4">
                   <CircleIcon
                     color="oklch(0.74 0.1 85)"
@@ -64,8 +63,9 @@ export function AboutSection() {
                   </div>
                 </div>
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </div>
     </section>
