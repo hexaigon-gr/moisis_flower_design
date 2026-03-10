@@ -9,7 +9,7 @@ import { BUSINESS } from "@/lib/general/constants";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/examples/language-switcher";
-import { ThemeSwitcher } from "@/components/examples/ThemeSwitcher";
+
 import { SocialIcon } from "@/components/social-icon";
 import { WoltButton } from "@/components/wolt-button";
 
@@ -190,16 +190,6 @@ export const Navbar = () => {
                 <LanguageSwitcher />
               </div>
 
-              {/* Theme Switcher — override styles for transparent state */}
-              <div
-                className={cn(
-                  "[&_button]:transition-colors [&_button]:duration-300",
-                  !isScrolled &&
-                    "[&_button]:border-white/20 [&_button]:text-white/80 [&_button]:hover:text-white [&_button]:hover:bg-white/10 [&_button]:bg-transparent"
-                )}
-              >
-                <ThemeSwitcher />
-              </div>
             </div>
 
             {/* Mobile: Hamburger Button */}
@@ -318,10 +308,7 @@ export const Navbar = () => {
                   isMobile
                 />
               </div>
-              <div className="flex items-center gap-1">
-                <LanguageSwitcher />
-                <ThemeSwitcher />
-              </div>
+              <LanguageSwitcher />
             </div>
           </div>
         </div>
