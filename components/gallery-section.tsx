@@ -115,7 +115,7 @@ export function GallerySection() {
                   src={image.src}
                   alt={`Gallery image ${index + 1}`}
                   width={600}
-                  height={index % 3 === 0 ? 800 : index % 3 === 1 ? 600 : 700}
+                  height={[800, 600, 700][index % 3]}
                   className="w-full h-auto object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   quality={80}

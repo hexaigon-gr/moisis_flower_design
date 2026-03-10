@@ -144,12 +144,12 @@ const EventPage = async ({
             {t("contactUs")}
           </p>
 
-          <a
+          <Link
             href="/#contact"
             className="inline-flex items-center gap-2.5 rounded-lg border-2 border-gold/60 bg-gold/10 px-8 py-4 font-medium text-gold-light tracking-wide transition-all duration-300 hover:bg-gold/20 hover:border-gold hover:scale-[1.02] hover:shadow-[0_0_32px_rgba(180,150,80,0.15)] active:scale-[0.98]"
           >
             <span className="text-base">{t("bookConsultation")}</span>
-          </a>
+          </Link>
         </div>
       </section>
 
