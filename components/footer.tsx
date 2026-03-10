@@ -29,8 +29,8 @@ function TikTokIcon({ className }: { className?: string }) {
 const NAV_LINKS = [
   { href: "#hero", key: "home" },
   { href: "#about", key: "about" },
-  { href: "#occasions", key: "occasions" },
   { href: "#events", key: "events" },
+  { href: "#occasions", key: "occasions" },
   { href: "#gallery", key: "gallery" },
   { href: "#reviews", key: "reviews" },
   { href: "#contact", key: "contact" },
@@ -187,10 +187,26 @@ export async function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="mt-14 border-t border-gold/20 pt-6">
+        <div className="mt-14 border-t border-gold/20 pt-6 flex flex-col items-center gap-2">
           <p className="text-center text-xs tracking-wide text-cream/40">
+            &copy; {new Date().getFullYear()} MΩISIS Flower Design.{" "}
             {tFooter("copyright")}
           </p>
+          <a
+            href="https://hexaigon.gr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[11px] text-cream/30 transition-colors duration-300 hover:text-cream/50"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="size-3.5 fill-amber-500/70"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5" />
+            </svg>
+            Made by hexaigon.gr
+          </a>
         </div>
       </div>
     </footer>

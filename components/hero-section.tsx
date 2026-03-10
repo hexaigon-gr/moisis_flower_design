@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { MapPin, Phone, ChevronDown } from "lucide-react";
+import { MapPin, Phone, ChevronDown, MessageCircle } from "lucide-react";
 import { BUSINESS } from "@/lib/general/constants";
+import { WoltButton } from "@/components/wolt-button";
 
 export function HeroSection() {
   const t = useTranslations("Hero");
@@ -60,26 +61,14 @@ export function HeroSection() {
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-10 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
           {/* Wolt Order Button — STAR */}
-          <a
-            href={BUSINESS.wolt}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex items-center gap-2.5 rounded-lg border-2 border-wolt-blue bg-transparent px-7 py-3.5 text-white font-medium transition-all duration-300 hover:bg-wolt-blue/10 hover:shadow-[0_0_24px_rgba(0,157,224,0.2)] hover:scale-[1.02] active:scale-[0.98]"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/wolt-logo.svg"
-              alt="Wolt"
-              className="h-5 w-auto transition-transform duration-300 group-hover:scale-110"
-            />
-            <span className="text-base tracking-wide">{t("woltButton")}</span>
-          </a>
+          <WoltButton />
 
           {/* Contact CTA — Gold outline */}
           <a
             href="#contact"
             className="flex items-center gap-2 rounded-lg border-2 border-gold/60 bg-transparent px-7 py-3.5 text-gold-light font-medium transition-all duration-300 hover:bg-gold/10 hover:border-gold hover:scale-[1.02] active:scale-[0.98]"
           >
+            <MessageCircle className="size-4" />
             <span className="text-base tracking-wide">
               {t("contactButton")}
             </span>

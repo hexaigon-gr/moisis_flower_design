@@ -10,12 +10,13 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/examples/language-switcher";
 import { ThemeSwitcher } from "@/components/examples/ThemeSwitcher";
 import { SocialIcon } from "@/components/social-icon";
+import { WoltButton } from "@/components/wolt-button";
 
 const NAV_LINKS = [
   { key: "home", href: "#hero" },
   { key: "about", href: "#about" },
-  { key: "occasions", href: "#occasions" },
   { key: "events", href: "#events" },
+  { key: "occasions", href: "#occasions" },
   { key: "gallery", href: "#gallery" },
   { key: "reviews", href: "#reviews" },
   { key: "contact", href: "#contact" },
@@ -158,35 +159,14 @@ export const Navbar = () => {
               </Button>
 
               {/* Wolt */}
-              <Button
-                variant="ghost"
-                size="icon-sm"
-                asChild
+              <WoltButton
+                size="small"
                 className={cn(
-                  "transition-colors duration-300",
                   isScrolled
-                    ? "hover:bg-accent"
-                    : "hover:bg-white/10"
+                    ? "text-foreground/80 hover:text-foreground"
+                    : "text-white"
                 )}
-              >
-                <a
-                  href={BUSINESS.wolt}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={t("orderOnWolt")}
-                >
-                  <Image
-                    src="/images/wolt-logo.svg"
-                    alt="Wolt"
-                    width={18}
-                    height={18}
-                    className={cn(
-                      "size-[18px] transition-opacity duration-300",
-                      isScrolled ? "opacity-80" : "brightness-0 invert opacity-80"
-                    )}
-                  />
-                </a>
-              </Button>
+              />
 
               {/* Language Switcher — override styles for transparent state */}
               <div
@@ -294,21 +274,10 @@ export const Navbar = () => {
           {/* Bottom Section */}
           <div className="space-y-6 pt-6">
             {/* Wolt Button */}
-            <a
-              href={BUSINESS.wolt}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-lg bg-wolt-blue/10 px-4 py-3 text-sm font-medium text-wolt-blue transition-colors duration-300 hover:bg-wolt-blue/20"
-            >
-              <Image
-                src="/images/wolt-logo.svg"
-                alt="Wolt"
-                width={20}
-                height={20}
-                className="size-5"
-              />
-              {t("orderOnWolt")}
-            </a>
+            <WoltButton
+              size="small"
+              className="w-full justify-center text-wolt-blue"
+            />
 
             {/* Phone */}
             <a

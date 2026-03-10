@@ -79,7 +79,7 @@
         "description": "Complete floral styling and wedding decoration"
       },
       "christening": {
-        "title": "Christening",
+        "title": "Christenings",
         "description": "Beautiful floral arrangements for christenings"
       },
       "graduation": {
@@ -132,7 +132,7 @@
       "subjects": {
         "general": "General Inquiry",
         "wedding": "Wedding",
-        "christening": "Christening",
+        "christening": "Christenings",
         "graduation": "Graduation",
         "corporate": "Corporate Event",
         "other": "Other"
@@ -148,7 +148,7 @@
     "events": "Events",
     "contact": "Contact",
     "followUs": "Follow Us",
-    "copyright": "© 2025 MOISIS Flower Design. All rights reserved.",
+    "copyright": "All rights reserved.",
     "orderOnWolt": "Order on Wolt"
   },
   "EventPage": {
@@ -162,7 +162,7 @@
       "about": "At MOISIS Flower Design, we take care of every floral detail for your wedding. From the bridal bouquet to the church and reception decor, every element is designed with love and precision. Harris works closely with you to bring your dream atmosphere to life, using only the freshest and most exquisite flowers."
     },
     "christening": {
-      "title": "Christening",
+      "title": "Christenings",
       "heroDescription": "Flowers that make the christening unforgettable",
       "about": "We create unique floral arrangements for christenings that blend the joy of the moment with the elegance of fresh flowers. From soft pastels to bolder palettes, we tailor every creation to match the style and theme of your celebration."
     },

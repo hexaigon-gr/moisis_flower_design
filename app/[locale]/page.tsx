@@ -18,8 +18,8 @@ const HomePage = async ({ params }: BasePageProps) => {
       <main>
         <HeroSection />
         <AboutSection />
-        <OccasionsSection />
         <EventsSection />
+        <OccasionsSection />
         <GallerySection />
         <ReviewsSection />
         <ContactSection />
