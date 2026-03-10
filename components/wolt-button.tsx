@@ -36,7 +36,7 @@ export function WoltButton({ size = "normal", className }: WoltButtonProps) {
       />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/wolt.jpg"
+        src="/images/wolt-logo.svg"
         alt="Wolt"
         className={cn(
           "w-auto transition-transform duration-300 group-hover:scale-110",
