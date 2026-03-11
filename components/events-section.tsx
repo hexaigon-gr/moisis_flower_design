@@ -47,7 +47,7 @@ export function EventsSection() {
                 src={`/images/events/${event.slug}.jpg`}
                 alt={t(`items.${event.slug}.title`)}
                 fill
-                className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                className={cn("object-cover transition-transform duration-500 ease-out group-hover:scale-110", isWedding && "object-[center_35%]")}
                 sizes={isWedding ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
                 quality={80}
               />

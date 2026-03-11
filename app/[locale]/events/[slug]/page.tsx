@@ -1,11 +1,28 @@
+import fs from "fs";
+import path from "path";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { ArrowLeft } from "lucide-react";
 import { EVENTS, BUSINESS } from "@/lib/general/constants";
 import { Link } from "@/lib/i18n/navigation";
+import { ImageGallery } from "@/components/image-gallery";
 
 const validSlugs = EVENTS.map((e) => e.slug);
+
+function getGalleryImages(slug: string): string[] {
+  const dir = path.join(process.cwd(), "public/images/events");
+  const images: string[] = [];
+  for (let i = 1; i <= 20; i++) {
+    const file = `${slug}-${i}.jpg`;
+    if (fs.existsSync(path.join(dir, file))) {
+      images.push(`/images/events/${file}`);
+    } else {
+      break;
+    }
+  }
+  return images;
+}
 
 export const generateStaticParams = () => {
   return EVENTS.map((event) => ({ slug: event.slug }));
@@ -45,6 +62,7 @@ const EventPage = async ({
   const title = t(`${slug}.title` as never);
   const heroDescription = t(`${slug}.heroDescription` as never);
   const about = t(`${slug}.about` as never);
+  const galleryImages = getGalleryImages(slug);
 
   return (
     <>
@@ -126,6 +144,13 @@ const EventPage = async ({
           </div>
         </div>
       </section>
+
+      {/* Gallery */}
+      {galleryImages.length > 0 && (
+        <section className="mx-auto max-w-6xl px-6 pb-20 md:pb-28">
+          <ImageGallery images={galleryImages} alt={title} />
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="relative overflow-hidden bg-forest">
