@@ -79,11 +79,11 @@ export function TodayCelebration() {
             <div className="flex size-8 items-center justify-center rounded-full bg-gold/20">
               <Flower className="size-4 text-gold" />
             </div>
-            <h2 className="text-sm font-semibold text-white/90 tracking-wide">
+            <h2 className="text-sm font-semibold text-white/90 tracking-wide whitespace-nowrap">
               {t("title")}
             </h2>
           </div>
-          <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-white/70 capitalize">
+          <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-white/70 capitalize whitespace-nowrap">
             {todayFormatted}
           </span>
         </div>

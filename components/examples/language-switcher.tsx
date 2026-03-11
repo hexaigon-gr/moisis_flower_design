@@ -24,16 +24,35 @@ const languages = [
   },
 ] as const;
 
-export const LanguageSwitcher = () => {
+interface LanguageSwitcherProps {
+  /** When true, clicking toggles between locales directly (no dropdown). Ideal for mobile. */
+  toggle?: boolean;
+}
+
+export const LanguageSwitcher = ({ toggle }: LanguageSwitcherProps) => {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
 
-  const currentLanguage = languages.find((lang) => lang.code === locale);
-
   const handleLanguageChange = (languageCode: string) => {
     router.replace(pathname, { locale: languageCode });
   };
+
+  if (toggle) {
+    const nextLocale = locale === "el" ? "en" : "el";
+    const nextLanguage = languages.find((l) => l.code === nextLocale)!;
+    return (
+      <Button
+        variant="outline"
+        size="icon"
+        className="size-8"
+        onClick={() => handleLanguageChange(nextLocale)}
+        aria-label={nextLanguage.name}
+      >
+        <Globe className="size-4" />
+      </Button>
+    );
+  }
 
   return (
     <DropdownMenu>

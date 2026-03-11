@@ -309,7 +309,7 @@ export const Navbar = () => {
                   isMobile
                 />
               </div>
-              <LanguageSwitcher />
+              <LanguageSwitcher toggle />
             </div>
           </div>
         </div>
