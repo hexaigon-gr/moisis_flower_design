@@ -18,6 +18,7 @@ const NAV_LINKS = [
   { key: "about", href: "#about" },
   { key: "events", href: "#events" },
   { key: "occasions", href: "#occasions" },
+  { key: "products", href: "#products" },
   { key: "gallery", href: "#gallery" },
   { key: "reviews", href: "#reviews" },
   { key: "contact", href: "#contact" },
