@@ -4,6 +4,12 @@ import createNextIntlPlugin from "next-intl/plugin";
 const nextConfig: NextConfig = {
   images: {
     qualities: [75, 80, 85],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "imageproxy.wolt.com",
+      },
+    ],
   },
 };
 

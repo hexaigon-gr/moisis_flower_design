@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { MapPin, Phone, ChevronDown, MessageCircle } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 import { BUSINESS } from "@/lib/general/constants";
 import { WoltButton } from "@/components/wolt-button";
+import { TodayCelebration } from "@/components/today-celebration";
 
 export function HeroSection() {
   const t = useTranslations("Hero");
@@ -33,18 +34,26 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 pt-24 pb-24 max-w-3xl mx-auto">
-        {/* Location badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-sm mb-6 md:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <MapPin className="size-3.5 text-gold-light" />
-          <span className="text-sm tracking-widest text-white/80 uppercase font-light">
-            {t("location")}
-          </span>
+        {/* Logo */}
+        <div className="mb-4 md:mb-5 animate-in fade-in slide-in-from-bottom-5 duration-700 delay-100">
+          <Image
+            src="/images/mini_logo.png"
+            alt="MΩISIS logo"
+            width={64}
+            height={64}
+            className="size-14 md:size-16"
+          />
         </div>
 
         {/* Headline */}
-        <h1 className="font-heading text-[2.75rem] md:text-7xl text-white tracking-tight leading-[1.1] mb-5 md:mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-150">
+        <h1 className="font-heading text-[2.75rem] md:text-7xl text-white tracking-tight leading-[1.1] mb-2 md:mb-3 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-150">
           {t("headline")}
         </h1>
+
+        {/* Subtitle */}
+        <p className="text-lg md:text-2xl text-gold-light/90 tracking-[0.2em] uppercase font-light mb-5 md:mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200">
+          {t("headlineSubtitle")}
+        </p>
 
         {/* Decorative separator */}
         <div className="flex items-center gap-4 mb-5 md:mb-6 animate-in fade-in duration-700 delay-300">
@@ -61,12 +70,12 @@ export function HeroSection() {
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-8 md:mb-10 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
           {/* Wolt Order Button — STAR */}
-          <WoltButton className="px-6 py-3 sm:px-7 sm:py-3.5" />
+          <WoltButton className="w-45 py-3 justify-center" />
 
           {/* Contact CTA — Gold outline */}
           <a
             href="#contact"
-            className="flex items-center gap-2 rounded-lg border-2 border-gold/60 bg-transparent px-6 py-3 sm:px-7 sm:py-3.5 text-gold-light font-medium transition-all duration-300 hover:bg-gold/10 hover:border-gold hover:scale-[1.02] active:scale-[0.98]"
+            className="flex w-45 items-center justify-center gap-2 rounded-lg border-2 border-gold/60 bg-transparent py-3 text-gold-light font-medium transition-all duration-300 hover:bg-gold/10 hover:border-gold hover:scale-[1.02] active:scale-[0.98]"
           >
             <MessageCircle className="size-4 text-gold" />
             <span className="text-sm sm:text-base tracking-wide">
@@ -74,18 +83,6 @@ export function HeroSection() {
             </span>
           </a>
         </div>
-
-        {/* Scroll indicator */}
-        <a
-          href="#about"
-          className="flex flex-col items-center gap-1 text-white/40 transition-colors duration-300 hover:text-white/70 mb-4 animate-in fade-in duration-700 delay-700"
-          aria-label={t("scrollDown")}
-        >
-          <span className="text-xs tracking-widest uppercase font-light">
-            {t("scrollDown")}
-          </span>
-          <ChevronDown className="size-4 animate-bounce" />
-        </a>
 
         {/* Phone number */}
         <a
@@ -97,6 +94,9 @@ export function HeroSection() {
             {BUSINESS.phone}
           </span>
         </a>
+
+        {/* Today's celebration widget */}
+        <TodayCelebration />
       </div>
     </section>
   );

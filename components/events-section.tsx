@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { EVENTS } from "@/lib/general/constants";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/motion";
+import { cn } from "@/lib/general/utils";
 
 export function EventsSection() {
   const t = useTranslations("Events");
@@ -28,13 +29,18 @@ export function EventsSection() {
           </p>
         </FadeIn>
 
-        {/* Events grid — 2x2 on desktop, 1 col on mobile */}
+        {/* Events grid — wedding spans full width on desktop */}
         <StaggerChildren staggerDelay={0.12} className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {EVENTS.map((event) => (
-            <StaggerItem key={event.slug}>
+          {EVENTS.map((event) => {
+            const isWedding = event.slug === "wedding";
+            return (
+            <StaggerItem key={event.slug} className={isWedding ? "md:col-span-2" : ""}>
             <Link
               href={`/events/${event.slug}`}
-              className="group relative block aspect-16/10 overflow-hidden rounded-xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className={cn(
+                "group relative block overflow-hidden rounded-xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl",
+                isWedding ? "aspect-4/3 md:aspect-21/9" : "aspect-4/3 md:aspect-16/10"
+              )}
             >
               {/* Background image with hover zoom */}
               <Image
@@ -42,7 +48,7 @@ export function EventsSection() {
                 alt={t(`items.${event.slug}.title`)}
                 fill
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={isWedding ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
                 quality={80}
               />
 
@@ -64,7 +70,8 @@ export function EventsSection() {
               </div>
             </Link>
             </StaggerItem>
-          ))}
+            );
+          })}
         </StaggerChildren>
       </div>
     </section>

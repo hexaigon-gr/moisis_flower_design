@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "MΩISIS Flower Design | Ανθοπωλείο Ηλιούπολη",
     description:
       "Curated floral compositions for weddings, christenings, and every occasion. Premium flower shop in Ilioupoli, Athens.",
-    images: [{ url: "/images/og.jpg", width: 1920, height: 1080, alt: "MΩISIS Flower Design" }],
+    images: [{ url: "/images/og.jpg", width: 1200, height: 630, alt: BUSINESS.name }],
     locale: "el_GR",
     alternateLocale: "en_US",
   },

@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/hero-section";
 import { AboutSection } from "@/components/about-section";
 import { OccasionsSection } from "@/components/occasions-section";
 import { EventsSection } from "@/components/events-section";
+import { ProductsSection } from "@/components/products-section";
 import { GallerySection } from "@/components/gallery-section";
 import { ReviewsSection } from "@/components/reviews-section";
 import { ContactSection } from "@/components/contact-section";
@@ -20,6 +21,7 @@ const HomePage = async ({ params }: BasePageProps) => {
         <AboutSection />
         <EventsSection />
         <OccasionsSection />
+        <ProductsSection />
         <GallerySection />
         <ReviewsSection />
         <ContactSection />

@@ -7,6 +7,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { DialogProvider } from "@/components/dialog-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 type Props = {
   children: React.ReactNode;
@@ -28,6 +29,7 @@ export const Providers = ({ children, messages, locale }: Props) => {
           </TooltipProvider>
           <DialogProvider />
           <Toaster />
+          <WhatsAppButton />
         </NextIntlClientProvider>
       </NextThemesProvider>
     </SessionProvider>

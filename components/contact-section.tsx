@@ -2,7 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
-import { MapPin, Phone, Mail, Clock, Send, User, AtSign, MessageSquare, Tag } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, User, AtSign, MessageSquare, Tag, Loader2, CheckCircle2 } from "lucide-react";
+import { sendContactEmail } from "@/server_actions/send-contact-email";
 import { FadeIn } from "@/components/motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -37,6 +38,7 @@ export function ContactSection() {
     subject: "general",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -46,15 +48,23 @@ export function ContactSection() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `[${t(`form.subjects.${form.subject}`)}] — ${form.name}`
-    );
-    const body = encodeURIComponent(
-      `${t("form.name")}: ${form.name}\n${t("form.email")}: ${form.email}\n${t("form.phone")}: ${form.phone}\n\n${form.message}`
-    );
-    window.location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
+    setStatus("sending");
+
+    const result = await sendContactEmail({
+      ...form,
+      subject: t(`form.subjects.${form.subject}`),
+    });
+
+    if (result.success) {
+      setStatus("sent");
+      setForm({ name: "", email: "", phone: "", subject: "general", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    } else {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   return (
@@ -155,6 +165,7 @@ export function ContactSection() {
           {/* ── Right Column: Contact Form (3/5 = 60%) ── */}
           <FadeIn direction="right" delay={0.2} className="lg:col-span-3">
             <form
+              id="contact-form"
               onSubmit={handleSubmit}
               className="rounded-xl border border-border/60 bg-card/70 backdrop-blur-sm p-8 md:p-10 shadow-sm space-y-6"
             >
@@ -245,13 +256,31 @@ export function ContactSection() {
                 </IconInput>
               </FormField>
 
+              {/* Status message */}
+              {status === "sent" && (
+                <div className="flex items-center gap-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 px-4 py-3 text-sm text-emerald-400">
+                  <CheckCircle2 className="size-4 shrink-0" />
+                  {t("form.success")}
+                </div>
+              )}
+              {status === "error" && (
+                <div className="rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-400">
+                  {t("form.error")}
+                </div>
+              )}
+
               {/* Submit */}
               <Button
                 type="submit"
-                className="w-full h-11 bg-gold text-white font-semibold hover:bg-gold-light transition-colors duration-300 cursor-pointer"
+                disabled={status === "sending"}
+                className="w-full h-11 bg-gold text-white font-semibold hover:bg-gold-light transition-colors duration-300 cursor-pointer disabled:opacity-50"
               >
-                <Send className="size-4 mr-2" />
-                {t("form.send")}
+                {status === "sending" ? (
+                  <Loader2 className="size-4 mr-2 animate-spin" />
+                ) : (
+                  <Send className="size-4 mr-2" />
+                )}
+                {status === "sending" ? t("form.sending") : t("form.send")}
               </Button>
             </form>
           </FadeIn>
