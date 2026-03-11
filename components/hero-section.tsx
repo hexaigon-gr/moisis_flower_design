@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Phone, MessageCircle } from "lucide-react";
 import { BUSINESS } from "@/lib/general/constants";
-import { WoltButton } from "@/components/wolt-button";
 import { TodayCelebration } from "@/components/today-celebration";
 
 export function HeroSection() {
@@ -69,9 +68,6 @@ export function HeroSection() {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-8 md:mb-10 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
-          {/* Wolt Order Button — STAR */}
-          <WoltButton className="w-45 py-3 justify-center" />
-
           {/* Contact CTA — Gold outline */}
           <a
             href="#contact"

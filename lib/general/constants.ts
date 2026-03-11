@@ -12,6 +12,7 @@ export const BUSINESS = {
   },
   phone: "21 0975 2161",
   phoneHref: "tel:+302109752161",
+  whatsapp: "306947876166",
   email: "moisisflowerdesign@gmail.com",
   wolt: "https://wolt.com/en/grc/athens/venue/misis-flower-design",
   socials: {

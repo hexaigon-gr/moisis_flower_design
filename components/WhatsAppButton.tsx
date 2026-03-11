@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { BUSINESS } from "@/lib/general/constants";
 import { cn } from "@/lib/general/utils";
 
-const WHATSAPP_NUMBER = BUSINESS.phone.replace(/\D/g, "");
+const WHATSAPP_NUMBER = BUSINESS.whatsapp;
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -30,7 +30,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "fixed bottom-6 right-6 z-50 flex items-center justify-center rounded-full bg-[#2D6A4F] p-3 md:gap-2.5 md:px-5 md:py-3 text-white shadow-lg transition-all duration-300",
+        "fixed bottom-6 right-6 z-40 flex items-center justify-center rounded-full bg-[#2D6A4F] p-3 md:gap-2.5 md:px-5 md:py-3 text-white shadow-lg transition-all duration-300",
         "hover:bg-[#1B4332] hover:shadow-xl hover:scale-105",
         "active:scale-95",
         isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"

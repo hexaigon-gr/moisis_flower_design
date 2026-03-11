@@ -65,17 +65,27 @@ export function TodayCelebration() {
     ? data.holiday[locale as "el" | "en"]
     : null;
 
+  const todayFormatted = new Date().toLocaleDateString(
+    locale === "el" ? "el-GR" : "en-GB",
+    { weekday: "long", day: "numeric", month: "long" }
+  );
+
   return (
     <div className="w-full max-w-md mx-auto mt-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-700">
       <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-4 sm:p-5">
         {/* Header */}
-        <div className="flex items-center gap-2.5 mb-3">
-          <div className="flex size-8 items-center justify-center rounded-full bg-gold/20">
-            <Flower className="size-4 text-gold" />
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2.5">
+            <div className="flex size-8 items-center justify-center rounded-full bg-gold/20">
+              <Flower className="size-4 text-gold" />
+            </div>
+            <h2 className="text-sm font-semibold text-white/90 tracking-wide">
+              {t("title")}
+            </h2>
           </div>
-          <h2 className="text-sm font-semibold text-white/90 tracking-wide">
-            {t("title")}
-          </h2>
+          <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-white/70 capitalize">
+            {todayFormatted}
+          </span>
         </div>
 
         {/* Names */}
