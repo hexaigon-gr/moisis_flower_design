@@ -18,12 +18,12 @@ const HomePage = async ({ params }: BasePageProps) => {
     <>
       <main>
         <HeroSection />
-        <AboutSection />
         <EventsSection />
         <OccasionsSection />
         <ProductsSection />
         <GallerySection />
         <ReviewsSection />
+        <AboutSection />
         <ContactSection />
       </main>
       <Footer />
