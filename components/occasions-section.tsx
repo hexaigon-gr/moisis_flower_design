@@ -45,7 +45,7 @@ export function OccasionsSection() {
               >
                 {/* Photo background */}
                 <Image
-                  src={`/images/occasions/${occasion.slug}.jpg`}
+                  src={`/images/occasions/${occasion.slug}/1.jpg`}
                   alt={t(`items.${occasion.slug}.title`)}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"

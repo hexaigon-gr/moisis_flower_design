@@ -180,6 +180,7 @@
     "bookConsultation": "Contact Us",
     "portfolio": "View our creations",
     "contactUs": "Get in touch to discuss your needs",
+    "gallery": "Gallery",
     "wedding": {
       "title": "Wedding",
       "heroDescription": "Complete floral styling to make your day truly magical",
@@ -210,6 +211,8 @@
     "backToOccasions": "Back to Occasions",
     "bookConsultation": "Contact Us",
     "contactUs": "Get in touch to discuss your needs",
+    "portfolio": "View our creations",
+    "gallery": "Gallery",
     "anniversary": {
       "title": "Anniversary - Love",
       "heroDescription": "Express your feelings with unique floral arrangements",

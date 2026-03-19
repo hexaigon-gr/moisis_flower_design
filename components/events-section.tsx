@@ -44,7 +44,7 @@ export function EventsSection() {
             >
               {/* Background image with hover zoom */}
               <Image
-                src={`/images/events/${event.slug}.jpg`}
+                src={`/images/events/${event.slug}/1.jpg`}
                 alt={t(`items.${event.slug}.title`)}
                 fill
                 className={cn("object-cover transition-transform duration-500 ease-out group-hover:scale-110", isWedding && "object-[center_35%]")}

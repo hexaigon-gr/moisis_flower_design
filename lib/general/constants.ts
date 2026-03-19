@@ -1,4 +1,5 @@
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://moisisflowerdesign.gr";
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL ?? "https://moisisflowerdesign.gr";
 
 export const BUSINESS = {
   name: "MΩISIS Flower Design",
@@ -22,7 +23,7 @@ export const BUSINESS = {
   },
   hours: {
     weekdays: { open: "09:00", close: "22:00" },
-    saturday: { open: "10:00", close: "22:00" },
+    saturday: { open: "09:00", close: "22:00" },
     sunday: { open: "10:00", close: "21:00" },
   },
   googleMapsLink: "https://maps.app.goo.gl/kmyEjX8qJb37WkbDA",
@@ -49,37 +50,44 @@ export const EVENTS = [
 export const PRODUCTS = [
   {
     slug: "bouquets",
-    image: "https://imageproxy.wolt.com/menu/menu-images/679c9e30ebb3c49b30a13d01/f6664d2c-e48a-11ef-b281-f6018ce86b75__78__1_.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/679c9e30ebb3c49b30a13d01/f6664d2c-e48a-11ef-b281-f6018ce86b75__78__1_.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/an--2",
   },
   {
     slug: "forever-roses",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/3a8c6d68-e483-11ef-b9ff-729e4bd91afd__01.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/3a8c6d68-e483-11ef-b9ff-729e4bd91afd__01.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/forever-roses-4",
   },
   {
     slug: "rose-bear",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/1f305f5a-dfc6-11ef-b4bc-ded1331bed25_shopping__6_.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/1f305f5a-dfc6-11ef-b4bc-ded1331bed25_shopping__6_.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/rose-bear-5",
   },
   {
     slug: "ecuador-roses",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/8c33474e-e489-11ef-9953-4af01833deda_download_photoroom.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/8c33474e-e489-11ef-9953-4af01833deda_download_photoroom.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/menucategory-6",
   },
   {
     slug: "flowers",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/f8144e2c-e489-11ef-b3d7-6672409bad5d________________________scaled_photoroom.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/f8144e2c-e489-11ef-b3d7-6672409bad5d________________________scaled_photoroom.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/menucategory-7",
   },
   {
     slug: "orchids",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/80b75132-e48c-11ef-a6f8-86ff89ed18d2_photoroom_20220207_141813_1200x1200_photoroom.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/80b75132-e48c-11ef-a6f8-86ff89ed18d2_photoroom_20220207_141813_1200x1200_photoroom.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/e-8",
   },
   {
     slug: "indoor-plants",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/2c9f53a2-e48b-11ef-8b14-060df75199c5_images_photoroom__1_.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/2c9f53a2-e48b-11ef-8b14-060df75199c5_images_photoroom__1_.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/a-y-9",
   },
   {
@@ -89,37 +97,44 @@ export const PRODUCTS = [
   },
   {
     slug: "dried-flowers",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/a8cfc622-e48c-11ef-a308-9a26e2de99a4_download_photoroom__21_.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/a8cfc622-e48c-11ef-a308-9a26e2de99a4_download_photoroom__21_.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/menucategory-11",
   },
   {
     slug: "lucky-bamboo",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/5458f6ba-e48a-11ef-aa29-3ae16ab65deb_download_photoroom__7_.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/5458f6ba-e48a-11ef-aa29-3ae16ab65deb_download_photoroom__7_.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/lucky-bamboo-12",
   },
   {
     slug: "drinks",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/dc12a95a-e932-11ef-9376-b2186e83c9a5_moet_brut_600x600_1_photoroom.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/dc12a95a-e932-11ef-9376-b2186e83c9a5_moet_brut_600x600_1_photoroom.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/menucategory-13",
   },
   {
     slug: "packaging",
-    image: "https://imageproxy.wolt.com/menu/menu-images/679c9e30ebb3c49b30a13d01/9a24ad46-e490-11ef-8e5a-2a99fa805cb1__63.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/679c9e30ebb3c49b30a13d01/9a24ad46-e490-11ef-8e5a-2a99fa805cb1__63.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/i-14",
   },
   {
     slug: "bonsai",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/12bfbbec-e48c-11ef-a61b-6e8d05cc1269_download_photoroom__15_.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/12bfbbec-e48c-11ef-a61b-6e8d05cc1269_download_photoroom__15_.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/menucategory-16",
   },
   {
     slug: "mixed-bouquets",
-    image: "https://imageproxy.wolt.com/menu/menu-images/679c9e30ebb3c49b30a13d01/86b68108-fb56-11ef-946f-024484f0f83a_0_photoroom__18_.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/679c9e30ebb3c49b30a13d01/86b68108-fb56-11ef-946f-024484f0f83a_0_photoroom__18_.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/menucategory-17",
   },
   {
     slug: "arrangements",
-    image: "https://imageproxy.wolt.com/menu/menu-images/shared/14930000-e87e-11ef-b971-4a5df705dfc1_8b350708_da2e_11ee_8aaa_ded6a304a82f_030.jpg?w=600",
+    image:
+      "https://imageproxy.wolt.com/menu/menu-images/shared/14930000-e87e-11ef-b971-4a5df705dfc1_8b350708_da2e_11ee_8aaa_ded6a304a82f_030.jpg?w=600",
     href: "/en/grc/athens/venue/misis-flower-design/items/menucategory-18",
   },
 ] as const;
