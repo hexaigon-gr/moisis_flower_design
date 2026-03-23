@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Camera } from "lucide-react";
 import { Link } from "@/lib/i18n/navigation";
 import { ImageGallery } from "@/components/image-gallery";
 
@@ -14,6 +14,7 @@ interface DetailPageLayoutProps {
   ctaLabel: string;
   contactLabel: string;
   galleryLabel: string;
+  photoshootNotice: string;
 }
 
 export function DetailPageLayout({
@@ -27,6 +28,7 @@ export function DetailPageLayout({
   ctaLabel,
   contactLabel,
   galleryLabel,
+  photoshootNotice,
 }: DetailPageLayoutProps) {
   const heroImage = images[0];
 
@@ -115,6 +117,16 @@ export function DetailPageLayout({
           </div>
         </div>
       </section>
+
+      {/* ─── Photoshoot Notice ─── */}
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex items-start gap-4 rounded-xl border border-gold/20 bg-gold/5 px-6 py-5">
+          <Camera className="mt-0.5 size-5 shrink-0 text-gold/70" />
+          <p className="text-sm leading-relaxed text-foreground/60">
+            {photoshootNotice}
+          </p>
+        </div>
+      </div>
 
       {/* ─── Photo Gallery ─── */}
       {images.length > 1 && (

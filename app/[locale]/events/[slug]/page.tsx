@@ -53,6 +53,7 @@ const EventPage = async ({
       ctaLabel={t("bookConsultation")}
       contactLabel={t("contactUs")}
       galleryLabel={t("gallery")}
+      photoshootNotice={t("photoshootNotice")}
     />
   );
 };
