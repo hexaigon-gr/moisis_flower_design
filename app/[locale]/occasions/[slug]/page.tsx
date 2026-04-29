@@ -22,7 +22,7 @@ export const generateMetadata = async ({
   const t = await getTranslations({ locale, namespace: "OccasionPage" });
 
   return {
-    title: `${t(`${slug}.title` as never)} — ${BUSINESS.name}`,
+    title: `${t(`${slug}.title` as never)} | ${BUSINESS.name}`,
     description: t(`${slug}.heroDescription` as never),
   };
 };

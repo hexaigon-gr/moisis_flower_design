@@ -14,14 +14,14 @@ import { SocialIcon } from "@/components/social-icon";
 import { WoltButton } from "@/components/wolt-button";
 
 const NAV_LINKS = [
-  { key: "home", href: "#hero" },
-  { key: "about", href: "#about" },
-  { key: "events", href: "#events" },
-  { key: "occasions", href: "#occasions" },
-  { key: "products", href: "#products" },
-  { key: "gallery", href: "#gallery" },
-  { key: "reviews", href: "#reviews" },
-  { key: "contact", href: "#contact" },
+  { key: "home", href: "/#hero" },
+  { key: "about", href: "/#about" },
+  { key: "events", href: "/#events" },
+  { key: "occasions", href: "/#occasions" },
+  { key: "products", href: "/#products" },
+  { key: "gallery", href: "/#gallery" },
+  { key: "reviews", href: "/#reviews" },
+  { key: "contact", href: "/#contact" },
 ] as const;
 
 // Simple SVG icons for social platforms (inline to avoid extra dependencies)
@@ -85,17 +85,17 @@ export const Navbar = () => {
       closeMobileMenu();
 
       if (!isHomePage) {
-        // Navigate to homepage with hash — scroll will happen after load
-        router.push(`/${href}`);
+        router.push(href);
         return;
       }
 
-      if (href === "#hero") {
+      const hash = href.substring(1); // "/#hero" → "#hero"
+      if (hash === "#hero") {
         window.scrollTo({ top: 0, behavior: "smooth" });
         return;
       }
 
-      const target = document.querySelector(href);
+      const target = document.querySelector(hash);
       if (target) {
         target.scrollIntoView({ behavior: "smooth" });
       }
@@ -117,8 +117,8 @@ export const Navbar = () => {
           <div className="flex h-16 items-center justify-between lg:h-18">
             {/* Left: Logo */}
             <a
-              href="#hero"
-              onClick={(e) => handleNavClick(e, "#hero")}
+              href="/#hero"
+              onClick={(e) => handleNavClick(e, "/#hero")}
               className="relative flex shrink-0 items-center"
             >
               <Image

@@ -1,5 +1,5 @@
 export const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL ?? "https://moisisflowerdesign.gr";
+  process.env.NEXT_PUBLIC_BASE_URL ?? "https://www.moisis-flower-design.gr";
 
 export const BUSINESS = {
   name: "MΩISIS Flower Design",

@@ -1,29 +1,42 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Phone, MessageCircle } from "lucide-react";
 import { BUSINESS } from "@/lib/general/constants";
+import { Button } from "@/components/ui/button";
 import { TodayCelebration } from "@/components/today-celebration";
 
 export function HeroSection() {
   const t = useTranslations("Hero");
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      videoRef.current?.pause();
+    }
+  }, []);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-dvh flex items-center justify-center overflow-hidden"
     >
-      {/* Background image */}
-      <Image
-        src="/images/hero/hero.jpg"
-        alt="MΩISIS Flower Design"
-        fill
-        priority
-        className="object-cover"
-        sizes="100vw"
-        quality={85}
-      />
+      {/* Background video — WebM first (smaller), MP4 fallback */}
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="none"
+        poster="/images/hero/hero.jpg"
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/images/videos/hero-video.webm" type="video/webm" />
+        <source src="/images/videos/hero-video.mp4" type="video/mp4" />
+      </video>
 
       {/* Dark gradient overlay */}
       <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/40 to-black/30" />
@@ -69,21 +82,24 @@ export function HeroSection() {
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-8 md:mb-10 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
           {/* Contact CTA — Gold outline */}
-          <a
-            href="#contact"
-            className="flex w-45 items-center justify-center gap-2 rounded-lg border-2 border-gold/60 bg-transparent py-3 text-gold-light font-medium transition-all duration-300 hover:bg-gold/10 hover:border-gold hover:scale-[1.02] active:scale-[0.98]"
+          <Button
+            asChild
+            variant="outline"
+            className="w-45 gap-2 border-2 border-gold/60 bg-transparent text-gold-light hover:bg-gold/10 hover:border-gold hover:text-gold-light hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
           >
-            <MessageCircle className="size-4 text-gold" />
-            <span className="text-sm sm:text-base tracking-wide">
-              {t("contactButton")}
-            </span>
-          </a>
+            <a href="/#contact">
+              <MessageCircle className="size-4 text-gold" />
+              <span className="text-sm sm:text-base tracking-wide">
+                {t("contactButton")}
+              </span>
+            </a>
+          </Button>
         </div>
 
         {/* Phone number */}
         <a
           href={BUSINESS.phoneHref}
-          className="inline-flex items-center gap-2 text-white/60 transition-colors duration-300 hover:text-white/90 animate-in fade-in duration-700 delay-700"
+          className="inline-flex items-center gap-2 text-white/60 transition-colors hover:text-white/90 animate-in fade-in duration-700 delay-700"
         >
           <Phone className="size-3.5" />
           <span className="text-sm tracking-wider font-light">

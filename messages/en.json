@@ -16,7 +16,7 @@
   "Hero": {
     "headline": "MΩISIS",
     "headlineSubtitle": "Luxury Flower Design",
-    "subheadline": "Curated floral compositions — Events • Custom Arrangements • Seasonal Design",
+    "subheadline": "Curated floral compositions: Events • Custom Arrangements • Seasonal Design",
     "location": "Ilioupoli",
     "woltButton": "Order Now",
     "contactButton": "Contact Us",
@@ -25,19 +25,19 @@
   "About": {
     "title": "About Us",
     "subtitle": "The story behind every creation",
-    "description": "At MΩISIS Flower Design, Harris crafts one-of-a-kind floral arrangements with a passion for quality and meticulous attention to detail. Every bouquet, every decoration, every composition is a small work of art — made with fresh flowers that last for weeks.",
+    "description": "At MΩISIS Flower Design, Harris crafts one-of-a-kind floral arrangements with a passion for quality and meticulous attention to detail. Every bouquet, every decoration, every composition is a small work of art, made with fresh flowers that last for weeks.",
     "highlights": {
       "quality": {
         "title": "Quality",
-        "description": "Long-lasting fresh flowers — every arrangement is crafted with the finest materials"
+        "description": "Long-lasting fresh flowers, crafted with the finest materials"
       },
       "creativity": {
         "title": "Creativity",
-        "description": "Unique designs for every occasion — from classic bouquets to stunning event installations"
+        "description": "Unique designs for every occasion, from classic bouquets to stunning event installations"
       },
       "service": {
         "title": "Service",
-        "description": "Personal care from consultation to delivery — always with a smile"
+        "description": "Personal care from consultation to delivery, always with a smile"
       }
     }
   },

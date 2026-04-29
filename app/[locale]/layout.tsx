@@ -24,52 +24,86 @@ const manrope = Manrope({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "MΩISIS Flower Design | Ανθοπωλείο Ηλιούπολη",
-    template: "%s | MΩISIS Flower Design",
-  },
-  description:
-    "Curated floral compositions for weddings, christenings, and every occasion. Premium flower shop in Ilioupoli, Athens. Defined by quality & detail.",
-  keywords: [
-    "ανθοπωλείο",
-    "Ηλιούπολη",
-    "λουλούδια",
-    "γάμος",
-    "βάπτιση",
-    "ανθοδέσμη",
-    "flower shop",
-    "Athens",
-    "wedding flowers",
-    "MΩISIS",
-  ],
-  authors: [{ name: "MΩISIS Flower Design" }],
-  creator: "MΩISIS Flower Design",
-  metadataBase: new URL(BASE_URL),
-  alternates: {
-    canonical: "/",
-    languages: { el: "/el", en: "/en" },
-  },
-  openGraph: {
-    type: "website",
-    siteName: "MΩISIS Flower Design",
+const META = {
+  el: {
     title: "MΩISIS Flower Design | Ανθοπωλείο Ηλιούπολη",
     description:
-      "Curated floral compositions for weddings, christenings, and every occasion. Premium flower shop in Ilioupoli, Athens.",
-    images: [{ url: "/images/og.jpg", width: 1200, height: 630, alt: BUSINESS.name }],
-    locale: "el_GR",
-    alternateLocale: "en_US",
+      "Ανθοπωλείο στην Ηλιούπολη. Στολισμοί γάμων, βαπτίσεις, μπουκέτα & λουλούδια για κάθε περίσταση. Παραδίδουμε μέσω Wolt. MΩISIS Flower Design.",
+    keywords: [
+      "ανθοπωλείο Ηλιούπολη",
+      "λουλούδια Ηλιούπολη",
+      "στολισμοί γάμων",
+      "στολισμοί γάμων Ηλιούπολη",
+      "στολισμός χώρων",
+      "ανθοπωλείο κοντά μου",
+      "ανθοστολισμός γάμου",
+      "βαπτίσεις",
+      "ανθοδέσμη",
+      "μπουκέτα",
+      "MΩISIS",
+    ],
+    ogDescription:
+      "Ανθοπωλείο στην Ηλιούπολη. Στολισμοί γάμων, βαπτίσεις, μπουκέτα & λουλούδια για κάθε περίσταση. Παραδίδουμε μέσω Wolt.",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "MΩISIS Flower Design",
-    description: "Premium flower shop in Ilioupoli, Athens — weddings, events & curated arrangements.",
-    images: ["/images/og.jpg"],
+  en: {
+    title: "MΩISIS Flower Design | Flower Shop Ilioupoli Athens",
+    description:
+      "Premium flower shop in Ilioupoli, Athens. Wedding decorations, christenings, bouquets & floral arrangements for every occasion. Order via Wolt.",
+    keywords: [
+      "flower shop Ilioupoli",
+      "flowers Athens",
+      "wedding flowers",
+      "wedding decoration",
+      "florist near me",
+      "event decoration",
+      "bouquets",
+      "christening flowers",
+      "MΩISIS",
+    ],
+    ogDescription:
+      "Premium flower shop in Ilioupoli, Athens. Wedding decorations, christenings, bouquets & floral arrangements for every occasion.",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+} as const;
+
+export const generateMetadata = async ({ params }: BaseLayoutProps): Promise<Metadata> => {
+  const { locale } = await params;
+  const lang = locale === "el" ? "el" : "en";
+  const meta = META[lang];
+
+  return {
+    title: {
+      default: meta.title,
+      template: `%s | MΩISIS Flower Design`,
+    },
+    description: meta.description,
+    keywords: [...meta.keywords],
+    authors: [{ name: "MΩISIS Flower Design" }],
+    creator: "MΩISIS Flower Design",
+    metadataBase: new URL(BASE_URL),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: { el: "/el", en: "/en" },
+    },
+    openGraph: {
+      type: "website",
+      siteName: "MΩISIS Flower Design",
+      title: meta.title,
+      description: meta.ogDescription,
+      images: [{ url: "/images/og.jpg", width: 1200, height: 630, alt: BUSINESS.name }],
+      locale: locale === "el" ? "el_GR" : "en_US",
+      alternateLocale: locale === "el" ? "en_US" : "el_GR",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "MΩISIS Flower Design",
+      description: meta.ogDescription,
+      images: ["/images/og.jpg"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
 };
 
 export const generateStaticParams = () => {
@@ -94,7 +128,9 @@ const LocaleLayout = async ({ children, params }: BaseLayoutProps) => {
               "@context": "https://schema.org",
               "@type": "Florist",
               name: BUSINESS.name,
-              description: "Curated floral compositions for weddings, christenings, and every occasion. Premium flower shop in Ilioupoli, Athens.",
+              description: locale === "el"
+                ? "Ανθοπωλείο στην Ηλιούπολη — στολισμοί γάμων, βαπτίσεις, μπουκέτα & λουλούδια για κάθε περίσταση."
+                : "Premium flower shop in Ilioupoli, Athens — wedding decorations, christenings, bouquets & floral arrangements for every occasion.",
               url: BASE_URL,
               telephone: BUSINESS.phoneHref.replace("tel:", ""),
               email: BUSINESS.email,
@@ -108,12 +144,13 @@ const LocaleLayout = async ({ children, params }: BaseLayoutProps) => {
               },
               geo: {
                 "@type": "GeoCoordinates",
-                latitude: 37.9300,
-                longitude: 23.7500,
+                latitude: 37.9253,
+                longitude: 23.7614,
               },
+              hasMap: BUSINESS.googleMapsLink,
               openingHoursSpecification: [
                 { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "22:00" },
-                { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:00", closes: "22:00" },
+                { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "22:00" },
                 { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "10:00", closes: "21:00" },
               ],
               image: `${BASE_URL}/images/og.jpg`,
@@ -126,7 +163,7 @@ const LocaleLayout = async ({ children, params }: BaseLayoutProps) => {
               aggregateRating: {
                 "@type": "AggregateRating",
                 ratingValue: "5.0",
-                reviewCount: "10",
+                reviewCount: "43",
                 bestRating: "5",
               },
             }),

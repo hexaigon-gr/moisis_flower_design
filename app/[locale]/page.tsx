@@ -16,6 +16,8 @@ const HomePage = async ({ params }: BasePageProps) => {
 
   return (
     <>
+      {/* Preload hero poster as LCP image — hoisted to <head> by React */}
+      <link rel="preload" as="image" href="/images/hero/hero.jpg" fetchPriority="high" />
       <main>
         <HeroSection />
         <EventsSection />
